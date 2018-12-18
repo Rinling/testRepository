@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+  <!--  5个必须填写项目  
+	## MySQL
+	#hibernate.dialect org.hibernate.dialect.MySQLDialect
+	#hibernate.dialect org.hibernate.dialect.MySQLInnoDBDialect
+	#hibernate.dialect org.hibernate.dialect.MySQLMyISAMDialect
+	
+	#hibernate.connection.driver_class com.mysql.jdbc.Driver
+	#hibernate.connection.url jdbc:mysql:///test
+	#hibernate.connection.username gavin
+	#hibernate.connection.password
+    -->
+	<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>  
+	<property name="hibernate.connection.url">jdbc:mysql:///text</property>  
+	<property name="hibernate.connection.username">root</property>  
+	<property name="hibernate.connection.password">12345</property>  
+	<!--配置hibernate支持的数据库的方言  -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+
+	<!--2个可选配置
+  	 show_sql   配置控制台是否打印sql语句  
+   	format_sql 配置控制台输出的sql是否以换行格式化显示
+ 	 -->   
+	<property name="hibernate.show_sql">true</property>  
+	<property name="hibernate.format_sql">true</property>
+
+	<!-- 	
+	## auto schema export  自动导出配置
+	
+	#hibernate.hbm2ddl.auto create-drop  先判断是否有表，有表就直接干掉！！！再去创建新表，覆盖之前的数据
+	#hibernate.hbm2ddl.auto create  帮你创建新表
+	#hibernate.hbm2ddl.auto update  创建表之前判断表是否存在，存在，不创建，判断数据是否发生变化，自动更新数据！！（上线）
+	#hibernate.hbm2ddl.auto validate  表若不存在，直接叫（抛异常！！）
+	 -->
+	<property name="hibernate.hbm2ddl.auto">update</property> 
+
+	<!--将mapper映射文件引入到hibernate主配置文件中  -->
+	<mapping resource="com/domain/User.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>	
+    

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <!-- package 包名 -->
+<hibernate-mapping package="com.domain">
+	<!-- class标签:用来描述javaBean实体和数据表的映射关系
+  		name:填写实体类的全路径名
+  		table：填写数据表的名称
+ 	-->
+<!-- <class name="com.domain.User" table="user"> -->
+     <class name="User" table="user">
+     <!--
+       id标签 用来描述 主键 
+       
+       name：填写实体类中主键的字段名称
+       cloumn:填写数据标的中主键列字段的名称
+       -->
+       <id name="id" column="id">
+      		 <!-- 填写主键的生成策略
+      		 	Identity   	由数据库来维护，hiibernate不负责
+      		 	increment  	每次插入前，先获取数据表中最大值，然后+1
+      		 	Hilo  	       高低位算法实现
+      		 	sequence	主要给oralce使用，MySQL不支持
+      		 	Native	   	Hilo+indentity+ sequence（三选一）
+      		 	Uuid		uuid算法生成的id，注意主键必须是String
+      		 	Assigned	由程序员自己来做
+      		 -->
+           <generator class="native"></generator>
+       </id>
+       <!-- 
+    
+         property标签：用来描述除主键之外的所有映射字段信息
+         
+         name:填写实体类中字段名称
+         cloumn:填写数据表中的列的字段名称
+        -->
+       <property name="username" column="username"></property>
+       <property name="password" column="password"></property>
+       <property name="email" column="email"></property>
+       <property name="sex" column="sex"></property>
+     </class>  
+ </hibernate-mapping>
